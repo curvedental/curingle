@@ -1,0 +1,57 @@
+HTTP/1.1 200 OK
+Date: Wed, 25 Nov 2009 12:00:00 GMT
+Connection: close
+Server: AmazonS3
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<card>
+  <name>Test card</name>
+  <description>&lt;p&gt;This is a test card.&lt;/p&gt;</description>
+  <card_type url="https://mingle.mydomain.com/api/v2/projects/foobar/card_types/1.xml">
+    <name>A Card Type</name>
+  </card_type>
+  <id type="integer">123</id>
+  <number type="integer">21</number>
+  <project url="https://mingle.mydomain.com/api/v2/projects/foobar.xml">
+    <name>Foo Bar</name>
+    <identifier>foobar</identifier>
+  </project>
+  <version type="integer">7</version>
+  <project_card_rank type="integer">15</project_card_rank>
+  <created_on type="datetime">2013-12-23T14:03:54Z</created_on>
+  <modified_on type="datetime">2013-12-23T20:41:14Z</modified_on>
+  <modified_by url="https://mingle.mydomain.com/api/v2/users/3.xml">
+    <name>Mike</name>
+    <login>mike</login>
+  </modified_by>
+  <created_by url="https://mingle.mydomain.com/api/v2/users/3.xml">
+    <name>Mike</name>
+    <login>mike</login>
+  </created_by>
+  <properties type="array">
+    <property type_description="Managed text list" hidden="false">
+      <name>Card Status</name>
+      <value>In Development</value>
+    </property>
+    <property type_description="Managed text list" hidden="false">
+      <name>Priority</name>
+      <value nil="true"></value>
+    </property>
+    <property type_description="Automatically generated from the team list" hidden="false">
+      <name>Developer</name>
+      <value url="https://mingle.mydomain.com/api/v2/users/3.xml">
+        <name>Mike</name>
+        <login>mike</login>
+      </value>
+    </property>
+    <property type_description="Automatically generated from the team list" hidden="false">
+      <name>Tester</name>
+      <value nil="true"></value>
+    </property>
+  </properties>
+  <tags>
+  </tags>
+  <rendered_description url="https://mingle.mydomain.com/api/v2/projects/foobar/render?content_provider%5Bid%5D=123&amp;content_provider%5Btype%5D=card">
+  </rendered_description>
+</card>

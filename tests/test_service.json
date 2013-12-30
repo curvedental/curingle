@@ -1,0 +1,14 @@
+{
+    "services": {
+        "test.mingle": {
+            "class": "Curingle\\MingleClient",
+            "params": {
+                "base_url": "https://mingle.mydomain.com",
+                "project": "foobar",
+                "request.options": {
+                    "auth": ["test_user", "my_password"]
+                }
+            }
+        }
+    }
+}

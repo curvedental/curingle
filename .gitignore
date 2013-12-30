@@ -1,0 +1,4 @@
+config/config.php
+vendor/
+phpunit.xml
+config/client_config.json
