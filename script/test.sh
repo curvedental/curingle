@@ -1,1 +1,1 @@
-php5 ./vendor/phpunit/phpunit/phpunit.php tests
+php ./vendor/phpunit/phpunit/phpunit.php tests
