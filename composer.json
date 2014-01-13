@@ -1,7 +1,6 @@
 {
     "name": "curvedental/curingle",
     "require": {
-        "php": ">=5.5.7",
         "guzzle/guzzle": "3.7"
     },
     "require-dev": {
