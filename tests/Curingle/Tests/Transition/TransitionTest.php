@@ -61,7 +61,7 @@ class TransitionTestCase extends \Guzzle\Tests\GuzzleTestCase
                                 $this->equalTo($expectedJson))
                          ->will($this->returnValue($stubRequest));
 
-        $result = $this->transition->execute($expectedComment);
+        $result = $this->transition->withComment($expectedComment)->execute();
 
         $this->assertTrue($result);
     }

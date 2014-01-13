@@ -4,31 +4,33 @@ namespace Curingle\Transition;
 
 class Transition
 {
-    private $name;
-    private $requires_comment;
-    private $execution_url;
-
-    private $client;
-    private $card_number;
+    private $params;
 
     public function __construct($params) {
-        $this->name = $params['name'];
-        $this->requires_comment = $params['requiresComment'];
-        $this->execution_url = $params['executionUrl'];
-
-        $this->client = $params['client'];
-        $this->card_number = $params['cardNumber'];
+        $this->params = $params;
     }
 
     public function getName() {
-        return $this->name;
+        return $this->params['name'];
     }
 
-    public function execute($comment="") {
+    public function withComment($comment) {
+        $this->params['comment'] = $comment;
+
+        return new Transition($this->params);
+    }
+
+    public function execute() {
+        $defaults = array(
+            'comment' => ''
+        );
+
+        $params = array_merge($defaults, $this->params);
+
         $body = array(
             'transition_execution' => array(
-                'card' => $this->card_number,
-                'comment' => $comment
+                'card' => $params['cardNumber'],
+                'comment' => $params['comment']
             )
         );
 
@@ -36,12 +38,15 @@ class Transition
             'Content-Type' => 'application/json; charset=utf-8'
         );
 
-        if( $this->requires_comment && empty($comment) ) {
+        if( $params['requiresComment'] && empty($params['comment']) ) {
             throw new \Exception('This transition requires a comment.');
         }
 
 
-        $request = $this->client->post($this->execution_url, $headers, json_encode($body));
+        $client = $params['client'];
+        $executionUrl = $params['executionUrl'];
+
+        $request = $client->post($executionUrl, $headers, json_encode($body));
         $response = $request->send();
 
         return $response->isSuccessful();

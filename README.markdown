@@ -66,11 +66,12 @@ $curingle->card(12345)->transition('Not A Transition');
 The above will throw an Exception with the message: "No transition matching that
 name."
 
-Some transitions require comments. You can pass a string into
-Transition::execute that will be added as a comment on a card
+Some transitions require a comment. You can add a comment to a transition using
+the `withComment` method:
 
 ```php
-$curingle->card(12345)->transition('Start development')->execute('A Comment');
+$curingle->card(12345)->transition('Start development')->withComment('A Comment')
+                                                       ->execute();
 ```
 
 If a transition requires a comment, and one isn't provided, an exception will be
