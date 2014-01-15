@@ -94,3 +94,23 @@ response mocking facilities. The tests can be run with the following command:
 ```sh
 ./script/test.sh
 ```
+
+## Vim-Syntastic
+
+If you use syntastic for Vim, you might notice that formatting errors on code
+that should be formatted correctly. This is because syntastic uses the global
+PHP binary as the linter by default and any features new in PHP 5.4 or 5.5 won't
+be recognized as valid.
+
+This can be solved by telling syntastic to use the new PHP 5.5 binary as the
+linter by adding the following to your ~/.vimrc:
+
+```sh
+    let g:syntastic_php_php_exe = '/path/to/php'
+```
+
+Alternatively, you can use a project like
+[Vim-ProjectLocal](https://github.com/krisajenkins/vim-projectlocal) to load
+.vimrc files on a per-project basis. This means that you can have a .vimrc in
+the root of your project containing the line above to use that PHP binary as the
+linter for that project.
